@@ -13,6 +13,7 @@ const GET_LOGO = gql`
             backgroundColor
             borderColor
             borderRadius
+            borderWidth
         }
     }
 `;
@@ -25,15 +26,17 @@ const UPDATE_LOGO = gql`
         $fontSize: Int!,
         $backgroundColor: String!,
         $borderColor: String!,
-        $borderRadius: Int!) {
+        $borderRadius: Int!,
+        $borderWidth: Int!) {
             updateLogo(
                 id: $id,
                 text: $text,
                 color: $color,
                 fontSize: $fontSize,
                 backgroundColor: $backgroundColor,
-                borderColor: $borderColor
-                borderRadius: $borderRadius) {
+                borderColor: $borderColor,
+                borderRadius: $borderRadius,
+                borderWidth: $borderWidth) {
                     lastUpdate
                 }
         }
@@ -42,7 +45,7 @@ const UPDATE_LOGO = gql`
 class EditLogoScreen extends Component {
 
     render() {
-        let text, color, fontSize, backgroundColor, borderColor,borderRadius;
+        let text, color, fontSize, backgroundColor, borderColor,borderRadius, borderWidth;
         return (
             <Query query={GET_LOGO} variables={{ logoId: this.props.match.params.id }}>
                 {({ loading, error, data }) => {
@@ -63,16 +66,23 @@ class EditLogoScreen extends Component {
                                         <div className="panel-body">                                            
                                             <form onSubmit={e => {
                                                 e.preventDefault();
-                                                updateLogo({ variables: { id: data.logo._id, text: text.value, color: color.value, 
-                                                    fontSize: parseInt(fontSize.value), backgroundColor: backgroundColor.value,
-                                                    borderColor: borderColor.value, borderStyle: "solid",
-                                                    borderRadius: parseInt(borderRadius.value) } });
+                                                updateLogo({ variables: { 
+                                                    id: data.logo._id, 
+                                                    text: text.value, 
+                                                    color: color.value, 
+                                                    fontSize: parseInt(fontSize.value), 
+                                                    backgroundColor: backgroundColor.value,
+                                                    borderColor: borderColor.value, 
+                                                    borderStyle: "solid",
+                                                    borderRadius: parseInt(borderRadius.value), 
+                                                    borderWidth: parseInt(borderWidth.value) } });
                                                 text.value = "";
                                                 color.value = "";
                                                 fontSize.value = "";
                                                 backgroundColor.value = "";
                                                 borderColor.value = "";
                                                 borderRadius.value = "";
+                                                borderWidth.value = "";
                                             }}>
                                                 <div className="form-group">
                                                     <label htmlFor="text">Text:</label>
@@ -109,6 +119,12 @@ class EditLogoScreen extends Component {
                                                     <input type="text" className="form-control" name="borderRadius" ref={node => {
                                                         borderRadius = node;
                                                     }} placeholder="Border Radius" defaultValue={data.logo.borderRadius} />
+                                                </div>
+                                                <div className="form-group">
+                                                    <label htmlFor="borderWidth">Border Width(Border Thickness):</label>
+                                                    <input type="text" className="form-control" name="borderWidth" ref={node => {
+                                                        borderWidth = node;
+                                                    }} placeholder="Border Width" defaultValue={data.logo.borderWidth} />
                                                 </div>
                                                 <button type="submit" className="btn btn-success">Submit</button>
                                             </form>
