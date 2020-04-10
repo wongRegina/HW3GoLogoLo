@@ -43,16 +43,23 @@ class ViewLogoScreen extends Component {
                                     </h3>
                                 </div>
                                 <div className="panel-body">
-                                    <dl>
-                                        <dt>Text:</dt>
-                                        <dd>{data.logo.text}</dd>
-                                        <dt>Color:</dt>
-                                        <dd>{data.logo.color}</dd>
-                                        <dt>Font Size:</dt>
-                                        <dd>{data.logo.fontSize}</dd>
-                                        <dt>Last Updated:</dt>
-                                        <dd>{data.logo.lastUpdate}</dd>
-                                    </dl>
+                                    <div className ="row">
+                                        <div className ="col s4">
+                                            <dl>
+                                                <dt>Text:</dt>
+                                                <dd>{data.logo.text}</dd>
+                                                <dt>Text Color:</dt>
+                                                <dd>{data.logo.color}</dd>
+                                                <dt>Font Size:</dt>
+                                                <dd>{data.logo.fontSize}</dd>
+                                                <dt>Last Updated:</dt>
+                                                <dd>{data.logo.lastUpdate}</dd>
+                                            </dl>
+                                        </div>
+                                        <div className ="col s8" style ={data.logo}>
+                                            {data.logo.text}
+                                        </div>
+                                    </div>
                                     <Mutation mutation={DELETE_LOGO} key={data.logo._id} onCompleted={() => this.props.history.push('/')}>
                                         {(removeLogo, { loading, error }) => (
                                             <div>
@@ -70,8 +77,9 @@ class ViewLogoScreen extends Component {
                                         )}
                                     </Mutation>
                                 </div>
+                                
                             </div>
-                        </div>
+                         </div>
                     );
                 }}
             </Query>

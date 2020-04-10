@@ -13,13 +13,14 @@ var logoType = new GraphQLObjectType({
     name: 'logo',
     fields: function () {
         return {
+            //@TODO
             _id: {
                 type: GraphQLString
             },
             text: {
                 type: GraphQLString
             },
-            color: {
+            color: { //Text color
                 type: GraphQLString
             },
             fontSize: {
