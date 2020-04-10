@@ -12,7 +12,7 @@ const GET_LOGO = gql`
             fontSize
             backgroundColor
             borderColor
-            borderWidth
+            borderRadius
         }
     }
 `;
@@ -25,7 +25,7 @@ const UPDATE_LOGO = gql`
         $fontSize: Int!,
         $backgroundColor: String!,
         $borderColor: String!,
-        $borderWidth: Int!) {
+        $borderRadius: Int!) {
             updateLogo(
                 id: $id,
                 text: $text,
@@ -33,7 +33,7 @@ const UPDATE_LOGO = gql`
                 fontSize: $fontSize,
                 backgroundColor: $backgroundColor,
                 borderColor: $borderColor
-                borderWidth: $borderWidth) {
+                borderRadius: $borderRadius) {
                     lastUpdate
                 }
         }
@@ -42,7 +42,7 @@ const UPDATE_LOGO = gql`
 class EditLogoScreen extends Component {
 
     render() {
-        let text, color, fontSize, backgroundColor, borderColor,borderWidth;
+        let text, color, fontSize, backgroundColor, borderColor,borderRadius;
         return (
             <Query query={GET_LOGO} variables={{ logoId: this.props.match.params.id }}>
                 {({ loading, error, data }) => {
@@ -66,13 +66,13 @@ class EditLogoScreen extends Component {
                                                 updateLogo({ variables: { id: data.logo._id, text: text.value, color: color.value, 
                                                     fontSize: parseInt(fontSize.value), backgroundColor: backgroundColor.value,
                                                     borderColor: borderColor.value, borderStyle: "solid",
-                                                    borderWidth: parseInt(borderWidth.value) } });
+                                                    borderRadius: parseInt(borderRadius.value) } });
                                                 text.value = "";
                                                 color.value = "";
                                                 fontSize.value = "";
                                                 backgroundColor.value = "";
                                                 borderColor.value = "";
-                                                borderWidth.value = "";
+                                                borderRadius.value = "";
                                             }}>
                                                 <div className="form-group">
                                                     <label htmlFor="text">Text:</label>
@@ -105,10 +105,10 @@ class EditLogoScreen extends Component {
                                                     }} placeholder = "Background Color" defaultValue={data.logo.borderColor}/>
                                                 </div>
                                                 <div className="form-group">
-                                                    <label htmlFor="borderWidth">Border Radius:</label>
-                                                    <input type="text" className="form-control" name="borderWidth" ref={node => {
-                                                        borderWidth = node;
-                                                    }} placeholder="Border Radius" defaultValue={data.logo.borderWidth} />
+                                                    <label htmlFor="borderRadius">Border Radius:</label>
+                                                    <input type="text" className="form-control" name="borderRadius" ref={node => {
+                                                        borderRadius = node;
+                                                    }} placeholder="Border Radius" defaultValue={data.logo.borderRadius} />
                                                 </div>
                                                 <button type="submit" className="btn btn-success">Submit</button>
                                             </form>
