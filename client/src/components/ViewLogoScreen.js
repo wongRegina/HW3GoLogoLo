@@ -13,6 +13,7 @@ const GET_LOGO = gql`
             fontSize
             backgroundColor
             borderColor
+            borderWidth
             lastUpdate
         }
     }
@@ -46,23 +47,25 @@ class ViewLogoScreen extends Component {
                                 </div>
                                 <div className="panel-body">
                                     <div className ="row">
-                                        <div className ="col s4">
-                                            <dl>
+                                        <div className ="col s2">
+                                            {/* <dl> */}
                                                 <dt>Text:</dt>
                                                 <dd>{data.logo.text}</dd>
                                                 <dt>Text Color:</dt>
                                                 <dd>{data.logo.color}</dd>
                                                 <dt>Font Size:</dt>
                                                 <dd>{data.logo.fontSize}</dd>
-                                                <dt>Background Color</dt>
+                                                <dt>Background Color:</dt>
                                                 <dd>{data.logo.backgroundColor}</dd>
-                                                <dt>Border Color</dt>
+                                                <dt>Border Color:</dt>
                                                 <dd>{data.logo.borderColor}</dd>
+                                                <dt>Border Radius:</dt>
+                                                <dd>{data.logo.borderWidth}</dd>
                                                 <dt>Last Updated:</dt>
                                                 <dd>{data.logo.lastUpdate}</dd>
-                                            </dl>
+                                            {/* </dl> */}
                                         </div>
-                                        <div className ="col s8" style ={data.logo}>
+                                        <div className ="col s10" style ={data.logo}>
                                             {data.logo.text}
                                         </div>
                                     </div>

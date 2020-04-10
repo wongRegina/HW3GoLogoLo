@@ -9,13 +9,15 @@ const ADD_LOGO = gql`
         $color: String!,
         $fontSize: Int!,
         $backgroundColor: String!,
-        $borderColor: String!) {
+        $borderColor: String!,
+        $borderWidth: Int!) {
         addLogo(
             text: $text,
             color: $color,
             fontSize: $fontSize,
             backgroundColor: $backgroundColor,
-            borderColor: $borderColor ) {
+            borderColor: $borderColor, 
+            borderWidth: $borderWidth) {
             _id
         }
     }
@@ -24,7 +26,7 @@ const ADD_LOGO = gql`
 class CreateLogoScreen extends Component {
 
     render() {
-        let text, color, fontSize, backgroundColor, borderColor;
+        let text, color, fontSize, backgroundColor, borderColor, borderWidth;
         return (
             <Mutation mutation={ADD_LOGO} onCompleted={() => this.props.history.push('/')}>
                 {(addLogo, { loading, error }) => (
@@ -41,12 +43,14 @@ class CreateLogoScreen extends Component {
                                     e.preventDefault();
                                     addLogo({ variables: { text: text.value, color: color.value, 
                                         fontSize: parseInt(fontSize.value), backgroundColor: backgroundColor.value,
-                                        borderColor: borderColor.value } });
+                                        borderColor: borderColor.value, borderStyle: "solid",
+                                        borderWidth: parseInt(borderWidth.value) } });
                                     text.value = "";
                                     color.value = "";
                                     fontSize.value = ""
                                     backgroundColor.value = "";
                                     borderColor.value = "";
+                                    borderWidth.value = "";
                                 }}>
                                     <div className="form-group">
                                         <label htmlFor="text">Text:</label>
@@ -77,6 +81,12 @@ class CreateLogoScreen extends Component {
                                         <input type="color" className="form-control" name="borderColor" ref={node =>{
                                             borderColor = node
                                         }} placeholder = "Border Color"/>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="borderWidth">Border Radius:</label>
+                                        <input type="number" className="form-control" name="borderWidth" ref={node => {
+                                            borderWidth = node;
+                                        }} placeholder="Border Radius" />
                                     </div>
                                     <button type="submit" className="btn btn-success">Submit</button>
                                 </form>
