@@ -47,7 +47,7 @@ class CreateLogoScreen extends Component {
                             <div className="panel-body">
                                 <form onSubmit={e => {
                                     e.preventDefault();
-                                    addLogo({ variables: { text: text.value, color: color.value, 
+                                    addLogo({ variables: { text: (text.value).replace(/ /g,"\xa0"), color: color.value, 
                                         fontSize: parseInt(fontSize.value), backgroundColor: backgroundColor.value,
                                         borderColor: borderColor.value, borderStyle: "solid",
                                         borderRadius: parseInt(borderRadius.value), borderWidth: parseInt(borderWidth.value) ,

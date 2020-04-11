@@ -74,7 +74,7 @@ class EditLogoScreen extends Component {
                                                 e.preventDefault();
                                                 updateLogo({ variables: { 
                                                     id: data.logo._id, 
-                                                    text: text.value, 
+                                                    text: (text.value).replace(/ /g,"\xa0"), 
                                                     color: color.value, 
                                                     fontSize: parseInt(fontSize.value), 
                                                     backgroundColor: backgroundColor.value,
