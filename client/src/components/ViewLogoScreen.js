@@ -50,8 +50,8 @@ class ViewLogoScreen extends Component {
                                 </div>
                                 <div className="panel-body">
                                     <div className ="container row">
-                                        <div className ="col-md-4">
-                                            {/* <dl> */}
+                                        <div className ="col-md-3">
+                                            <dl>
                                                 <dt>Text:</dt>
                                                 <dd>{data.logo.text}</dd>
                                                 <dt>Text Color:</dt>
@@ -72,20 +72,25 @@ class ViewLogoScreen extends Component {
                                                 <dd>{data.logo.margin}</dd>
                                                 <dt>Last Updated:</dt>
                                                 <dd>{data.logo.lastUpdate}</dd>
-                                            {/* </dl> */}
+                                            </dl>
                                         </div>
-                                        <div className ="col-md-10" style ={
-                                                {color: data.logo.color,
-                                                fontSize: data.logo.fontSize,
-                                                backgroundColor: data.logo.backgroundColor,
-                                                borderColor: data.logo.borderColor,
-                                                borderStyle: "solid",
-                                                borderRadius: data.logo.borderRadius,
-                                                borderWidth: data.logo.borderWidth,
-                                                padding: data.logo.padding,
-                                                margin: data.logo.margin,
-                                                overflow: 'auto'}}>
-                                            {data.logo.text}
+                                        <div className ="col-md-8" style = {{width: "max-content",
+                                                    height: "max-content",overflow: 'auto'}}>
+                                            <div className = "row" style ={
+                                                    {color: data.logo.color,
+                                                    fontSize: data.logo.fontSize,
+                                                    backgroundColor: data.logo.backgroundColor,
+                                                    borderColor: data.logo.borderColor,
+                                                    borderStyle: "solid",
+                                                    borderRadius: data.logo.borderRadius,
+                                                    borderWidth: data.logo.borderWidth,
+                                                    padding: data.logo.padding,
+                                                    margin: data.logo.margin,
+                                                    width: "max-content",
+                                                    height: "max-content",
+                                                    overflow: 'auto'}}>
+                                                {data.logo.text}
+                                            </div>
                                         </div>
                                     </div>
                                     <Mutation mutation={DELETE_LOGO} key={data.logo._id} onCompleted={() => this.props.history.push('/')}>
