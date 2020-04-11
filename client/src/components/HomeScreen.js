@@ -24,8 +24,8 @@ class HomeScreen extends Component {
                     if (error) return `Error! ${error.message}`;
 
                     return (
-                        <div className="container row">
-                            <div className="col s4">
+                        <div className="mx-auto container row">
+                            <div className="col-md-4" style={{marginTop: "20px"}}>
                                 <h3>Recent Work</h3>
                                 {data.logos.map((logo, index) => (
                                     <div key={index} className='home_logo_link'
@@ -34,13 +34,20 @@ class HomeScreen extends Component {
                                     </div>
                                 ))}
                             </div>
-                            <div className="col s8">
+                            <div className="col-md-8">
                                 <div id="home_banner_container">
-                                    @todo<br />
-                                    List Maker
+                                    GoLogoLo
                                 </div>
+                                <div>  </div>
                                 <div>
-                                    <Link id="add_logo_button" to="/create">Add Logo</Link>
+                                    <Link id="add_logo_button" to="/create" style={{
+                                        backgroundColor:"#C0C0C0", 
+                                        paddingLeft: "5px",
+                                        paddingRight: "5px",
+                                        borderStyle: "solid",
+                                        borderColor: "#000000",
+                                        borderWidth: "1px"
+                                    }}>Create a New</Link>
                                 </div>
                             </div>
                         </div>
