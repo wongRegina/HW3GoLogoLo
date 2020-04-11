@@ -16,6 +16,7 @@ const GET_LOGO = gql`
             borderRadius
             borderWidth
             padding
+            margin
             lastUpdate
         }
     }
@@ -67,11 +68,23 @@ class ViewLogoScreen extends Component {
                                                 <dd>{data.logo.borderWidth}</dd>
                                                 <dt>Padding:</dt>
                                                 <dd>{data.logo.padding}</dd> 
+                                                <dt>Margin:</dt>
+                                                <dd>{data.logo.margin}</dd>
                                                 <dt>Last Updated:</dt>
                                                 <dd>{data.logo.lastUpdate}</dd>
                                             {/* </dl> */}
                                         </div>
-                                        <div className ="col-md-8" style ={data.logo}>
+                                        <div className ="col-md-10" style ={
+                                                {color: data.logo.color,
+                                                fontSize: data.logo.fontSize,
+                                                backgroundColor: data.logo.backgroundColor,
+                                                borderColor: data.logo.borderColor,
+                                                borderStyle: "solid",
+                                                borderRadius: data.logo.borderRadius,
+                                                borderWidth: data.logo.borderWidth,
+                                                padding: data.logo.padding,
+                                                margin: data.logo.margin,
+                                                overflow: 'auto'}}>
                                             {data.logo.text}
                                         </div>
                                     </div>
