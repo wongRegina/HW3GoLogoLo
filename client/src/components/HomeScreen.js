@@ -27,7 +27,7 @@ class HomeScreen extends Component {
                         <div className="mx-auto container row">
                             <div className="col-md-4" style={{marginTop: "20px"}}>
                                 <h3>Recent Work</h3>
-                                {data.logos.map((logo, index) => (
+                                {data.logos.sort((a, b) => b.lastUpdate > a.lastUpdate).map((logo, index) => (
                                     <div key={index} className='home_logo_link'
                                         style={{ cursor: "pointer" }}>
                                         <Link to={`/view/${logo._id}`}>{logo.text}</Link>
