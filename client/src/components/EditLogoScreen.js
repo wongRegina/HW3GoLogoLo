@@ -59,7 +59,7 @@ class EditLogoScreen extends Component {
                     if (error) return `Error! ${error.message}`;
 
                     return (
-                        <Mutation mutation={UPDATE_LOGO} key={data.logo._id} onCompleted={() => this.props.history.push(`/`)}>
+                        <Mutation mutation={UPDATE_LOGO} key={data.logo._id} onCompleted={() => this.props.history.push(`/view/${data.logo._id}`)}>
                             {(updateLogo, { loading, error }) => (
                                 <div className="container">
                                     <div className="panel panel-default">
@@ -147,7 +147,10 @@ class EditLogoScreen extends Component {
                                                         margin = node;
                                                     }} placeholder="Margin" defaultValue={data.logo.margin} />
                                                 </div>
-                                                <button type="submit" className="btn btn-success">Submit</button>
+                                                <button type="submit" className="btn btn-success" >
+                                                    {/*  onCompleted ={window.location.href = `/view/${data.logo._id}`}> */}
+                                                    Submit
+                                                </button>
                                             </form>
                                             {loading && <p>Loading...</p>}
                                             {error && <p>Error :( Please try again</p>}
