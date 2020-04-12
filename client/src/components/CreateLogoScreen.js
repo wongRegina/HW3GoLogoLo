@@ -34,7 +34,8 @@ class CreateLogoScreen extends Component {
     render() {
         let text, color, fontSize, backgroundColor, borderColor, borderRadius, borderWidth, padding, margin;
         return (
-            <Mutation mutation={ADD_LOGO} onCompleted={() => this.props.history.push('/')}>
+            <Mutation mutation={ADD_LOGO} onCompleted={data => {this.props.history.push(`/view/${data.addLogo._id}`)}
+                }>
                 {(addLogo, { loading, error }) => (
                     <div className="container">
                         <div className="panel panel-default">
