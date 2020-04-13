@@ -109,12 +109,23 @@ class EditLogoScreen extends Component {
     }
 
     render() {
-        let text, color, fontSize, backgroundColor, borderColor,borderRadius, borderWidth, padding, margin;
+        let text, color, fontSize, backgroundColor, borderColor, borderRadius, borderWidth, padding, margin;
         return (
             <Query query={GET_LOGO} variables={{ logoId: this.props.match.params.id }}>
                 {({ loading, error, data }) => {
                     if (loading) return 'Loading...';
                     if (error) return `Error! ${error.message}`;
+                    if(this.state.text == null){
+                        this.setState({ text:data.logo.text});
+                        this.setState({ textColor: data.logo.color});
+                        this.setState({ fontSize: data.fontSize});
+                        this.setState({ backgroundColor: data.logo.backgroundColor});
+                        this.setState({ borderColor: data.logo.borderColor});
+                        this.setState({ borderRadius: data.logo.borderRadius});
+                        this.setState({ borderWidth: data.logo.borderWidth});
+                        this.setState({ padding: data.logo.padding});
+                        this.setState({ margin: data.logo.margin});
+                    }
 
                     return (
                         <Mutation mutation={UPDATE_LOGO} key={data.logo._id} onCompleted={() => this.props.history.push(`/view/${data.logo._id}`)}>
@@ -228,14 +239,14 @@ class EditLogoScreen extends Component {
                                                         height: "max-content",overflow: 'auto'}}>
                                                     <div className = "row" style ={
                                                         {color: this.state.textColor,
-                                                        fontSize: this.state.fontSize,
+                                                        fontSize: parseInt(this.state.fontSize),
                                                         backgroundColor: this.state.backgroundColor,
                                                         borderColor: this.state.borderColor,
                                                         borderStyle: "solid",
-                                                        borderRadius: this.state.borderRadius,
-                                                        borderWidth: this.state.borderWidth,
-                                                        padding: this.state.padding,
-                                                        margin: this.state.margin,
+                                                        borderRadius: parseInt(this.state.borderRadius),
+                                                        borderWidth: parseInt(this.state.borderWidth),
+                                                        padding: parseInt(this.state.padding),
+                                                        margin: parseInt(this.state.margin),
                                                         width: "max-content",
                                                         height: "max-content",
                                                         overflow: 'auto'}}>

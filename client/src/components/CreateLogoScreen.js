@@ -34,7 +34,7 @@ class CreateLogoScreen extends Component {
         super(props);
         this.state = {
             text: "GoLogoLo",
-            fontSize: "30px",
+            fontSize: "30",
             textColor: "#FF5733",
             backgroundColor: "#A569BD",
             borderColor: "#707B7C",
