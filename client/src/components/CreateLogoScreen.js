@@ -108,7 +108,10 @@ class CreateLogoScreen extends Component {
                                     <div className ="col-md-3">
                                         <form onSubmit={e => {
                                             e.preventDefault();
-                                            addLogo({ variables: { text: (text.value).replace(/ /g,"\xa0"), color: color.value, 
+                                            if((text.value).trim() === ""){
+                                                return false;
+                                            }
+                                            addLogo({ variables: { text: (text.value).trim().replace(/ /g,"\xa0"), color: color.value, 
                                                 fontSize: parseInt(fontSize.value), backgroundColor: backgroundColor.value,
                                                 borderColor: borderColor.value, borderStyle: "solid",
                                                 borderRadius: parseInt(borderRadius.value), borderWidth: parseInt(borderWidth.value) ,
@@ -139,7 +142,7 @@ class CreateLogoScreen extends Component {
                                             </div>
                                             <div className="form-group">
                                                 <label htmlFor="fontSize">Font Size:</label>
-                                                <input type="number" className="form-control" 
+                                                <input type="number" min="2" max = "144" className="form-control" 
                                                     onChange={this.handleFontSizeChange} name="fontSize" ref={node => {
                                                     fontSize = node;
                                                 }} placeholder="Font Size" defaultValue="30"/>
@@ -160,28 +163,28 @@ class CreateLogoScreen extends Component {
                                             </div>
                                             <div className="form-group">
                                                 <label htmlFor="borderRadius">Border Radius:</label>
-                                                <input type="number" className="form-control" 
+                                                <input type="number" min="0" max = "30" className="form-control" 
                                                     onChange={this.handleBorderRadiusChange} name="borderRadius" ref={node => {
                                                     borderRadius = node;
                                                 }} placeholder="Border Radius" defaultValue = "10"/>
                                             </div>
                                             <div className="form-group">
                                                 <label htmlFor="borderWidth">Border Width(Border Thickness):</label>
-                                                <input type="number" className="form-control" 
+                                                <input type="number" min="0" max = "30" className="form-control" 
                                                     onChange={this.handleborderWidthChange} name="borderWidth" ref={node => {
                                                     borderWidth = node;
                                                 }} placeholder="Border Width" defaultValue = "10"/>
                                             </div>
                                             <div className="form-group">
                                                 <label htmlFor="padding">Padding:</label>
-                                                <input type="number" className="form-control"
+                                                <input type="number" min="0" max = "30" className="form-control"
                                                     onChange={this.handlePaddingChange} name="padding" ref={node => {
                                                     padding = node;
                                                 }} placeholder="Padding" defaultValue = "10"/>
                                             </div>
                                             <div className="form-group">
                                                 <label htmlFor="margin">Margin:</label>
-                                                <input type="number" className="form-control" 
+                                                <input type="number" min="0" max = "30" className="form-control" 
                                                     onChange={this.handleMarginChange} name="margin" ref={node => {
                                                     margin = node;
                                                 }} placeholder="Margin" defaultValue = "10"/>

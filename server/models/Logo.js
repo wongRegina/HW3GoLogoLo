@@ -8,9 +8,9 @@ var LogoSchema = new mongoose.Schema({
   backgroundColor: String,
   borderColor: String,
   borderRadius: {type: Number, min: 0, max: 30},
-  borderWidth: {type: Number, min: 2, max: 30},
-  padding: {type: Number, min: 2, max: 100},
-  margin: {type: Number, min: 2, max: 30},
+  borderWidth: {type: Number, min: 0, max: 30},
+  padding: {type: Number, min: 0, max: 30},
+  margin: {type: Number, min: 0, max: 30},
   lastUpdate: { type: Date, default: Date.now },
 });
 
