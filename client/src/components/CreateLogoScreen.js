@@ -73,49 +73,49 @@ class CreateLogoScreen extends Component {
                                         <label htmlFor="color">Color:</label>
                                         <input type="color" className="form-control" name="color" ref={node => {
                                             color = node;
-                                        }} placeholder="Color" />
+                                        }} placeholder="Color" defaultValue="#FF5733"/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="fontSize">Font Size:</label>
                                         <input type="number" className="form-control" name="fontSize" ref={node => {
                                             fontSize = node;
-                                        }} placeholder="Font Size" />
+                                        }} placeholder="Font Size" defaultValue="30"/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="backgroundColor"> Background Color</label>
                                         <input type="color" className="form-control" name="backgroundColor" ref={node =>{
                                             backgroundColor = node
-                                        }} placeholder = "Background Color"/>
+                                        }} placeholder = "Background Color" defaultValue ="#A569BD"/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="borderColor"> Border Color</label>
                                         <input type="color" className="form-control" name="borderColor" ref={node =>{
                                             borderColor = node
-                                        }} placeholder = "Border Color"/>
+                                        }} placeholder = "Border Color" defaultValue = "#707B7C"/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="borderRadius">Border Radius:</label>
                                         <input type="number" className="form-control" name="borderRadius" ref={node => {
                                             borderRadius = node;
-                                        }} placeholder="Border Radius" />
+                                        }} placeholder="Border Radius" defaultValue = "10"/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="borderWidth">Border Width(Border Thickness):</label>
                                         <input type="number" className="form-control" name="borderWidth" ref={node => {
                                             borderWidth = node;
-                                        }} placeholder="Border Width" />
+                                        }} placeholder="Border Width" defaultValue = "10"/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="padding">Padding:</label>
                                         <input type="number" className="form-control" name="padding" ref={node => {
                                             padding = node;
-                                        }} placeholder="Padding" />
+                                        }} placeholder="Padding" defaultValue = "10"/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="margin">Margin:</label>
                                         <input type="number" className="form-control" name="margin" ref={node => {
                                             margin = node;
-                                        }} placeholder="Margin" />
+                                        }} placeholder="Margin" defaultValue = "10"/>
                                     </div>
                                     <button type="submit" className="btn btn-success">Submit</button>
                                 </form>
